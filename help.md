@@ -11,13 +11,13 @@ You can randomly be assigned a server via round robin by using:
 |:--|:--|
 | irc.macak.co.uk | 6697 |
 
-The table below details the features of out srevers.
+The table below details our services.
 
 | Domain Name | Ports | Server Name | Location | SSL Fingerprint |
 |:--|:--|:--|:--|:--|
 | irc.hackthis.co.uk | 6697 | Keef | London, UK | Missing |
-| irc.port22.co.uk | 6697	  | HammerFall | London, UK | Missing |
-| irc.matrix.ac | 6697 	  | Matrix | Frankfurt, Germany | Missing |
+| irc.port22.co.uk 	 | 6697 | HammerFall | London, UK | Missing |
+| irc.matrix.ac 	 | 6697 | Matrix | Frankfurt, Germany | Missing |
 
 ## Tor
 
@@ -31,10 +31,48 @@ Read Tor's IRC guide for more information on how to protect yourself and best gu
 
 # Services 
 
-## NickServ 
+## NickServ {} 
 
 - commands 
 
 ## ChanServ 
 
 - commands 
+
+# Clients
+
+## WeeChat
+
+WeeChat is a command line IRC client. [User Guide](https://weechat.org/files/doc/stable/weechat_user.en.html)
+
+Screen allows you to detach and attach a running process.
+
+	screen weechat
+
+Add a server and connect.
+
+	/server add macak irc.macak.co.uk/6697 -ssl
+	/connect macak
+
+You should now be connected to the IRC network, and able to register/identify your nickname via the [services](#NickServ)
+
+If you want to detach the session press ```ctrl+a+d``` and to attach: 
+
+	screen -r 
+
+### SASL Authentication
+
+Once you've registered your nickname you should identify yourself to the server via SASL.
+
+First make sure that weechat stores your information encrypted. By using a passphrase.
+
+	/secure passphrase <your passphrase>
+
+To add secured data use ```/secure set```. In this case we want to store our nick password.
+
+	/secure set macak <password>
+
+And now we need to tell weechat to use the login data.
+
+	/set irc.server.Macak.sasl_username <username>
+	/set irc.server.Macak.sasl_password "${sec.data.freenode}"

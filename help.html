@@ -27,7 +27,7 @@ Please make sure to verify the SSL fingerprint.</p>
 </tr>
 </tbody>
 </table>
-<p>The table below details the features of out srevers.</p>
+<p>The table below details our services.</p>
 <table>
 <thead>
 <tr class="header">
@@ -90,5 +90,25 @@ Please make sure to verify the SSL fingerprint.</p>
 <ul>
 <li>commands</li>
 </ul>
+<h1 id="clients">Clients</h1>
+<h2 id="weechat">WeeChat</h2>
+<p>WeeChat is a command line IRC client. <a href="https://weechat.org/files/doc/stable/weechat_user.en.html">User Guide</a></p>
+<p>Screen allows you to detach and attach a running process.</p>
+<pre><code>screen weechat</code></pre>
+<p>Add a server and connect.</p>
+<pre><code>/server add macak irc.macak.co.uk/6697 -ssl
+/connect macak</code></pre>
+<p>You should now be connected to the IRC network, and able to register/identify your nickname via the <a href="#NickServ">services</a></p>
+<p>If you want to detach the session press <code>ctrl+a+d</code> and to attach:</p>
+<pre><code>screen -r </code></pre>
+<h3 id="sasl-authentication">SASL Authentication</h3>
+<p>Once you've registered your nickname you should identify yourself to the server via SASL.</p>
+<p>First make sure that weechat stores your information encrypted. By using a passphrase.</p>
+<pre><code>/secure passphrase &lt;your passphrase&gt;</code></pre>
+<p>To add secured data use <code>/secure set</code>. In this case we want to store our nick password.</p>
+<pre><code>/secure set macak &lt;password&gt;</code></pre>
+<p>And now we need to tell weechat to use the login data.</p>
+<pre><code>/set irc.server.Macak.sasl_username &lt;username&gt;
+/set irc.server.Macak.sasl_password &quot;${sec.data.freenode}&quot;</code></pre>
 </body>
 </html>
