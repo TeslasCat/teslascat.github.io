@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 id="how-to-access-the-macak-irc-net">How to access the Macak IRC net</h1>
-<p>At minimum all our servers run SSL on port 6697.<br />
+<p>All our servers run SSL on port 6697.<br />
 Please make sure to verify the SSL fingerprint.</p>
 <h2 id="servers">Servers</h2>
 <p>You can randomly be assigned a server via round robin by using:</p>
@@ -44,24 +44,26 @@ Please make sure to verify the SSL fingerprint.</p>
 <td align="left">6697</td>
 <td align="left">Keef</td>
 <td align="left">London, UK</td>
-<td align="left">Missing</td>
+<td align="left">F0:06:59:F2:84:9E:89:DA:F2:78:18:2A:25:32:0A:EB:C5:B2:97:16</td>
 </tr>
 <tr class="even">
 <td align="left">irc.port22.co.uk</td>
 <td align="left">6697</td>
 <td align="left">HammerFall</td>
 <td align="left">London, UK</td>
-<td align="left">Missing</td>
-</tr>
-<tr class="odd">
-<td align="left">irc.matrix.ac</td>
-<td align="left">6697</td>
-<td align="left">Matrix</td>
-<td align="left">Frankfurt, Germany</td>
-<td align="left">Missing</td>
+<td align="left">AB:8C:5B:3F:11:5A:0F:52:E4:14:47:E5:56:EB:19:5B:CE:59:53:7E</td>
 </tr>
 </tbody>
 </table>
+<h3 id="verifying-ssl-fingerprint">Verifying SSL Fingerprint</h3>
+<p>Vertify the server you're connecting to by running the below command and check the fingerprint out matches the above.</p>
+<pre><code>echo | openssl s_client -connect &lt;hostname:port&gt; | openssl x509 -noout -fingerprint</code></pre>
+<ul>
+<li><strong>echo</strong> - This sends a newline command to the connection, forcing it to close so we don't have to wait for it to time out.</li>
+<li><strong>openssl s_client</strong> - This tels openssl to act as a generic SSL/TLS client.</li>
+<li><strong>-connect <hostname:port></strong> - This is the server to connect too. e.g. <em>irc.port22.co.uk:6697</em></li>
+<li><strong>x509 -noout -fingerprint</strong> - This decodes the key and displays the fingerprint.</li>
+</ul>
 <h2 id="tor">Tor</h2>
 <p>Our Tor servers do not use SSL, not even self-signed. This is a weakness and you should take extra precautions (Such as GPG/mpOTR/OMEMO/Np1sec) depending on your threat model.</p>
 <p>Read Tor's IRC guide for more information on how to protect yourself and best guidelines - <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/IrcSilc" class="uri">https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/IrcSilc</a></p>
