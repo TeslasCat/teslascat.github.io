@@ -60,8 +60,8 @@ Please make sure to verify the SSL fingerprint.</p>
 <pre><code>echo | openssl s_client -connect &lt;hostname:port&gt; | openssl x509 -noout -fingerprint</code></pre>
 <ul>
 <li><strong>echo</strong> - This sends a newline command to the connection, forcing it to close so we don't have to wait for it to time out.</li>
-<li><strong>openssl s_client</strong> - This tels openssl to act as a generic SSL/TLS client.</li>
-<li><strong>-connect <hostname:port></strong> - This is the server to connect too. e.g. <em>irc.port22.co.uk:6697</em></li>
+<li><strong>openssl s_client</strong> - This tells openssl to act as a generic SSL/TLS client.</li>
+<li><strong>-connect &lt;hostname:port&gt;</strong> - This is the server to connect too. e.g. <em>irc.port22.co.uk:6697</em></li>
 <li><strong>x509 -noout -fingerprint</strong> - This decodes the key and displays the fingerprint.</li>
 </ul>
 <h2 id="tor">Tor</h2>

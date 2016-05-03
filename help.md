@@ -25,8 +25,8 @@ Vertify the server you're connecting to by running the below command and check t
 	echo | openssl s_client -connect <hostname:port> | openssl x509 -noout -fingerprint
 
 - **echo** - This sends a newline command to the connection, forcing it to close so we don't have to wait for it to time out.
-- **openssl s_client** - This tels openssl to act as a generic SSL/TLS client.
-- **-connect <hostname:port>** - This is the server to connect too. e.g. *irc.port22.co.uk:6697*
+- **openssl s_client** - This tells openssl to act as a generic SSL/TLS client.
+- **-connect \<hostname:port\>** - This is the server to connect too. e.g. *irc.port22.co.uk:6697*
 - **x509 -noout -fingerprint** - This decodes the key and displays the fingerprint.
 
 ## Tor
