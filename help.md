@@ -1,6 +1,6 @@
 # How to access the Macak IRC net
 
-At minimum all our servers run SSL on port 6697.  
+All our servers run SSL on port 6697.  
 Please make sure to verify the SSL fingerprint.
 
 ## Servers 
@@ -15,9 +15,19 @@ The table below details our services.
 
 | Domain Name | Ports | Server Name | Location | SSL Fingerprint |
 |:--|:--|:--|:--|:--|
-| irc.hackthis.co.uk | 6697 | Keef | London, UK | Missing |
-| irc.port22.co.uk 	 | 6697 | HammerFall | London, UK | Missing |
-| irc.matrix.ac 	 | 6697 | Matrix | Frankfurt, Germany | Missing |
+| irc.hackthis.co.uk | 6697 | Keef | London, UK | F0:06:59:F2:84:9E:89:DA:F2:78:18:2A:25:32:0A:EB:C5:B2:97:16 |
+| irc.port22.co.uk   | 6697 | HammerFall | London, UK | AB:8C:5B:3F:11:5A:0F:52:E4:14:47:E5:56:EB:19:5B:CE:59:53:7E |
+
+### Verifying SSL Fingerprint
+
+Vertify the server you're connecting to by running the below command and check the fingerprint out matches the above.
+
+	echo | openssl s_client -connect <hostname:port> | openssl x509 -noout -fingerprint
+
+- **echo** - This sends a newline command to the connection, forcing it to close so we don't have to wait for it to time out.
+- **openssl s_client** - This tels openssl to act as a generic SSL/TLS client.
+- **-connect <hostname:port>** - This is the server to connect too. e.g. *irc.port22.co.uk:6697*
+- **x509 -noout -fingerprint** - This decodes the key and displays the fingerprint.
 
 ## Tor
 
